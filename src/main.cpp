@@ -34,9 +34,9 @@ void setup() {
   Serial.println();
   Serial.println("WORK_SUMAI V2 Wokwi system simulation");
   Serial.println("Audio source: potentiometer test adapter (NOT an INMP441/I2S simulation)");
-  Serial.printf("Simulation audio adapter: %s\n", audioReady ? "READY" : "ERROR");
-  Serial.printf("MPU6050: %s\n", motionReady ? "CONNECTED" : "ERROR");
-  Serial.printf("Blynk compile-time mode: %s\n", ENABLE_BLYNK ? "ENABLED" : "DISABLED");
+  Serial.printf("Simulation audio adapter: %s\r\n", audioReady ? "READY" : "ERROR");
+  Serial.printf("MPU6050: %s\r\n", motionReady ? "CONNECTED" : "ERROR");
+  Serial.printf("Blynk compile-time mode: %s\r\n", ENABLE_BLYNK ? "ENABLED" : "DISABLED");
 }
 
 void loop() {
@@ -56,7 +56,7 @@ void loop() {
   serviceBlynk(state, soundRms, motion.accelMagnitude, motion.gyroMagnitude, monitoringEnabled, nowMs);
 
   if (nowMs - lastStatusPrintMs >= STATUS_INTERVAL_MS) {
-    Serial.printf("SIM SoundRMS=%.0f | Accel=%.2fg | Gyro=%.1f dps | %s\n",
+    Serial.printf("SIM SoundRMS=%.0f | Accel=%.2fg | Gyro=%.1f dps | %s\r\n",
                   soundRms, motion.accelMagnitude, motion.gyroMagnitude, alertStateName(state));
     lastStatusPrintMs = nowMs;
   }
