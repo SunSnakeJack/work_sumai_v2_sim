@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "WORK_SUMAI V2 SIM",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-c3-devkitm-1", "id": "esp", "top": 160, "left": 360, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": 0, "left": 370, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "simSoundRms", "top": 170, "left": 80, "attrs": {} },
+    { "type": "wokwi-buzzer", "id": "soundBuzzer", "top": 390, "left": 250, "attrs": { "volume": "0.1" } },
+    { "type": "wokwi-buzzer", "id": "motionBuzzer", "top": 390, "left": 460, "attrs": { "volume": "0.1" } },
+    { "type": "wokwi-led", "id": "statusLed", "top": 190, "left": 670, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "ledResistor", "top": 190, "left": 580, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-slide-switch", "id": "monitoringSwitch", "top": 510, "left": 380, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "imu1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "imu1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "imu1:SDA", "esp:4", "green", [ "v0" ] ],
+    [ "imu1:SCL", "esp:5", "blue", [ "v0" ] ],
+    [ "simSoundRms:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "simSoundRms:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "simSoundRms:SIG", "esp:0", "orange", [ "v0" ] ],
+    [ "esp:6", "ledResistor:1", "green", [ "v0" ] ],
+    [ "ledResistor:2", "statusLed:A", "green", [ "v0" ] ],
+    [ "statusLed:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:7", "soundBuzzer:1", "yellow", [ "v0" ] ],
+    [ "soundBuzzer:2", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:10", "motionBuzzer:1", "yellow", [ "v0" ] ],
+    [ "motionBuzzer:2", "esp:GND.1", "black", [ "v0" ] ],
+    [ "monitoringSwitch:2", "esp:3", "purple", [ "v0" ] ],
+    [ "monitoringSwitch:1", "esp:GND.1", "black", [ "v0" ] ],
+    [ "monitoringSwitch:3", "esp:3V3", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
+
