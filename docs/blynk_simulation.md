@@ -1,16 +1,16 @@
 # Manual Blynk simulation test
 
-Initial local simulation uses `ENABLE_BLYNK=0` and requires no credentials. To test the real Blynk Cloud with simulated sensor inputs:
+The current Blynk simulation build uses `ENABLE_BLYNK=1`. To test the real Blynk Cloud with simulated sensor inputs:
 
 1. Create a Blynk Template.
 2. Create a Device from that template.
 3. Create V0-V4 datastreams: V0 simulated SoundRMS, V1 acceleration magnitude, V2 gyro magnitude, V3 state integer, and V4 monitoring enabled.
 4. Create the `sound_alert` event.
-5. Create the `motion_alert` event.
+5. Create the `movement_alert` event.
 6. Create the `combined_alert` event.
 7. Enable push notifications for all three events.
 8. Put the Template ID, Template Name, and Device Auth Token into local `include/secrets.h`. Do not edit `secrets.example.h` with real values and do not commit `secrets.h`.
-9. Change the `ENABLE_BLYNK` build flag in `platformio.ini` from 0 to 1.
+9. Confirm the `ENABLE_BLYNK` build flag in `platformio.ini` remains set to 1.
 10. Build the project.
 11. Start Wokwi.
 12. Verify connection to the open `Wokwi-GUEST` network; its password is empty and it is used only in simulation.
@@ -25,5 +25,5 @@ Initial local simulation uses `ENABLE_BLYNK=0` and requires no credentials. To t
 
 Local LED/buzzer behavior must continue if Wi-Fi or Blynk is unavailable. The firmware uses short periodic reconnect attempts and has no permanent Wi-Fi wait loop.
 
-V3 mapping: 0 monitoring off, 1 normal, 2 sound alert, 3 motion alert, 4 combined alert.
+V3 values: `NORMAL`, `SOUND_ALERT`, `MOTION_ALERT`, `COMBINED_ALERT`, and `MONITORING_OFF`.
 

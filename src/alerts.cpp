@@ -73,4 +73,14 @@ const char* alertStateName(AlertState state) {
   }
   return "UNKNOWN";
 }
+const char* alertStateBlynkValue(AlertState state) {
+  switch (state) {
+    case AlertState::MONITORING_OFF: return "MONITORING_OFF";
+    case AlertState::NORMAL: return "NORMAL";
+    case AlertState::SOUND_ALERT: return "SOUND_ALERT";
+    case AlertState::MOTION_ALERT: return "MOTION_ALERT";
+    case AlertState::COMBINED_ALERT: return "COMBINED_ALERT";
+  }
+  return "UNKNOWN";
+}
 

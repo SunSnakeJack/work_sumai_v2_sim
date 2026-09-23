@@ -10,6 +10,10 @@
 #define ENABLE_BLYNK 0
 #endif
 
+#ifndef ENABLE_BLYNK_NETWORK_DIAGNOSTICS
+#define ENABLE_BLYNK_NETWORK_DIAGNOSTICS 0
+#endif
+
 static_assert(SIMULATION_MODE == 1, "This project is the Wokwi simulation adapter; real I2S remains in work_sumai_v2_real");
 
 constexpr uint8_t MPU6050_ADDRESS = 0x68;
@@ -35,8 +39,11 @@ constexpr uint32_t SENSOR_INTERVAL_MS = 100;
 constexpr uint32_t STATUS_INTERVAL_MS = 500;
 constexpr uint32_t BLYNK_TELEMETRY_INTERVAL_MS = 1000;
 constexpr uint32_t BLYNK_RECONNECT_INTERVAL_MS = 10000;
+constexpr uint32_t BLYNK_CONNECT_SESSION_TIMEOUT_MS = 6000;
 constexpr uint32_t WIFI_RECONNECT_INTERVAL_MS = 15000;
 constexpr uint32_t BLYNK_EVENT_COOLDOWN_MS = 30000;
+constexpr char BLYNK_SERVER_HOST[] = "sgp1.blynk.cloud";
+constexpr uint16_t BLYNK_SERVER_PORT = 80;
 
 constexpr char SIM_WIFI_SSID[] = "Wokwi-GUEST";
 constexpr char SIM_WIFI_PASSWORD[] = "";
